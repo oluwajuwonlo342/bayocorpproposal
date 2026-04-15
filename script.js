@@ -1,35 +1,33 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const book = document.getElementById("book");
+    const bookElement = document.getElementById("book");
 
-    // Check if device is mobile
+    // helper function for mobile detection
     const isMobile = () => window.innerWidth < 768;
 
-    const pageFlip = new St.PageFlip(book, {
-        width: 550, 
-        height: 700,
+    const pageFlip = new St.PageFlip(bookElement, {
+        width: 550, // base page width
+        height: 750, // base page height
         
-        
-        minWidth: 315,
+        size: "stretch", // Critical for responsiveness
+        minWidth: 250,   // Smallest it can go (iPhone SE size)
         maxWidth: 1000,
-        minHeight: 420,
-        maxHeight: 1350,
+        minHeight: 350,
+        maxHeight: 1500,
 
-        showCover: true, 
-        drawShadow: true, 
-        
-        // --- CAROUSEL ENHANCEMENTS ---
-        flippingTime: 600, // Faster flip speed for carousel feel (default is ~1000)
-        maxShadowOpacity: 0.3, // Subtle shadows for a cleaner look
-        showPageCorners: true, // Shows small corners to hint that it's interactive
-        disableFlipByClick: false, // Allows clicking the side to "slide" to next page
-        // -----------------------------
+        showCover: true,
+        drawShadow: true,
+        flippingTime: 600,
 
+        // Switches to single-page on mobile for better visibility
         mode: isMobile() ? "portrait" : "double",
-        mobileScrollSupport: true // Set to true to allow swipe gestures on mobile
+        
+        mobileScrollSupport: true,
+        clickEventForward: true
     });
 
     pageFlip.loadFromHTML(document.querySelectorAll(".page"));
 
+    // Watch for window resize or rotation
     window.addEventListener('resize', () => {
         pageFlip.update({
             mode: isMobile() ? "portrait" : "double"

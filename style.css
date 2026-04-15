@@ -1,31 +1,27 @@
-* {
+html, body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: #121212; /* Dark professional background */
+    width: 100%;
+    height: 100%;
+    overflow: hidden; 
+    background-color: #121212;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    overflow: hidden; /* Prevents scrolling during page turns */
 }
 
 .container {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 20px; /* Gives a little breathing room on edges */
 }
 
-/* The flip-book container */
+/* Let the library control the .flip-book dimensions */
 .flip-book {
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 .page {
@@ -35,21 +31,30 @@ body {
 .page-content {
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Make images responsive and contained */
 .page-content img {
     width: 100%;
-    height: 100%;
-    object-fit: contain; /* Keeps the whole image visible */
+    height: 70%;
+    object-fit: contain; /* Important: keeps image aspect ratio intact */
     display: block;
 }
 
-/* Mobile specific styling */
+/* Simple Mobile Fix: Adjust padding so the book isn't touching screen edges */
 @media (max-width: 768px) {
     .container {
-        margin-top: -200px;
-        padding: 20px;
+        margin-top: -145px;
+        padding: 10px;
+        /* Remove margin-top so it stays vertically centered */
     }
+    
+.page-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Important: keeps image aspect ratio intact */
+    display: block;
+}
 }
