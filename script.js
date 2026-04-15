@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const pageFlip = new St.PageFlip(book, {
         width: 550, 
-        height: 750,
-        size: "stretch", 
+        height: 700,
+        
         
         minWidth: 315,
         maxWidth: 1000,
